@@ -30,6 +30,22 @@ public class LoginController {
 
     @RequestMapping(value = "/register" , method = RequestMethod.POST)
     public String register(TbUser tbUser , ModelMap map){
-        return "";
+        return "admin/user/register";
     }
+
+
+
+    @RequestMapping(value = "/login" , method = RequestMethod.GET)
+    public String loginIndex(TbUser tbUser , ModelMap map){
+        return "admin/user/login";
+    }
+
+    @RequestMapping(value = "/login" , method = RequestMethod.POST)
+    public String login(TbUser tbUser , ModelMap map){
+        return "admin/user/login";
+    }
+
+
+
+
 }
