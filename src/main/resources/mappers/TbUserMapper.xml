@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.henu.dao.TbUserMapper">
+
+    <sql id="tbUserDaoColumn">
+        id AS "id",
+        user_name AS "userName",
+        user_account AS "userAccount",
+        user_password AS "userPassword",
+        sex AS "sex",
+        age AS "age",
+        school AS "school",
+        specialty AS "specialty",
+        create_time AS "createTime",
+        update_time AS "updateTime"
+    </sql>
+
+
+    <select id="findAll" resultType="com.henu.entity.TbUser">
+        SELECT
+        <include refid="tbUserDaoColumn"/>
+        FROM tb_user
+    </select>
+
+</mapper>
