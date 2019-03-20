@@ -37,7 +37,7 @@ public class LoginController {
 
     @RequestMapping(value = "/login" , method = RequestMethod.GET)
     public String loginIndex(TbUser tbUser , ModelMap map){
-        return "admin/user/login";
+        return "login";
     }
 
     @RequestMapping(value = "/login" , method = RequestMethod.POST)
