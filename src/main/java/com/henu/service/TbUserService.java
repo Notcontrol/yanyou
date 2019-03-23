@@ -14,28 +14,9 @@ public interface TbUserService {
      * @param id
      * @return
      */
-    TbUser findById(Integer id);
+    TbUser findById(String id);
 
-    /**
-     * 根据Id查询用户所有数据保护权限
-     * @param id
-     * @return
-     */
-    TbUser findUserVoById(Integer id);
-
-    /**
-     * 根据用户名查找用户不包含角色等信息
-     * @param username
-     * @return
-     */
-    public TbUser findByUserNameNoRole(String username);
-
-    /**
-     * 根据用户名查找用户
-     * @param username
-     * @return
-     */
-    TbUser findByUserName(String username);
+    TbUser login(TbUser tbUser);
 
     /**
      * 增加或者修改用户
@@ -48,13 +29,6 @@ public interface TbUserService {
      * @param id
      */
     void delete(Integer id);
-
-    /**
-     * 给用户分配角色
-     * @param id 用户ID
-     * @param roleIds 角色Ids
-     */
-    void saveOrUpdateGrant(TbUser tbUser, String[] roleIds);
 
     /**
      * 查询所有
@@ -70,6 +44,6 @@ public interface TbUserService {
      */
     List<TbUser> findByPage(String param, String pageSize, String pageNum);
 
-    void updatePassword(TbUser record);
+    void updatePassword(String id, String newPassword);
 }
 

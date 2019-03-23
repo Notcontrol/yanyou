@@ -11,11 +11,9 @@ import java.util.List;
  */
 public interface TbUserMapper extends BaseMapper<TbUser> {
 
-    TbUser findUserVoByUserName(String userName);
+    TbUser findByUserAccountAndPassword(TbUser tbUser);
 
-    TbUser findUserVoById(Integer id);
-
-    TbUser findById(Integer id);
+    TbUser findById(String id);
 
     List<TbUser> findAll();
 
@@ -23,5 +21,5 @@ public interface TbUserMapper extends BaseMapper<TbUser> {
 
     int updateById(TbUser tbUser);
 
-    int updatePassword(TbUser tbUser);
+    int updatePassword(@Param("id") String id, @Param("newPassword") String newPassword);
 }

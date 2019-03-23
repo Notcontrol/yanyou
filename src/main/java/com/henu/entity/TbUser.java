@@ -3,6 +3,7 @@ package com.henu.entity;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by 15313 on 2019/3/19.
@@ -18,7 +19,7 @@ public class TbUser implements Serializable{
     private String age;
     private String school;
     private String specialty;
-    private String createTime;
-    private String updateTime;
+    private Date createTime;
+    private Date updateTime;
 
 }
