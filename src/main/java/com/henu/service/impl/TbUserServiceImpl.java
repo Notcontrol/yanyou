@@ -24,7 +24,7 @@ public class TbUserServiceImpl implements TbUserService {
 
     @Override
     public TbUser findById(String id) {
-        return null;
+        return tbUserMapper.findById(id);
     }
 
     @Override
@@ -63,5 +63,11 @@ public class TbUserServiceImpl implements TbUserService {
     @Override
     public void updatePassword(String id , String newPassword) {
         tbUserMapper.updatePassword(id,newPassword);
+    }
+
+
+    @Override
+    public void updateAvatar(String id, String avatar) {
+        tbUserMapper.updateAvatar(id,avatar);
     }
 }

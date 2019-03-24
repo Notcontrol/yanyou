@@ -45,5 +45,8 @@ public interface TbUserService {
     List<TbUser> findByPage(String param, String pageSize, String pageNum);
 
     void updatePassword(String id, String newPassword);
+
+
+    void updateAvatar(String id,String avatar);
 }
 

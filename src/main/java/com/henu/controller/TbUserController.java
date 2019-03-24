@@ -4,15 +4,17 @@ import com.github.pagehelper.PageInfo;
 import com.henu.entity.TbUser;
 import com.henu.service.TbUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 /**
  * Created by 15313 on 2019/3/19.
@@ -21,6 +23,9 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/admin/user")
 public class TbUserController {
+
+    @Value("${user.avatar.location:/avatar/}")
+    private String baseAvatarLocation;
 
     @Autowired
     private TbUserService tbUserService;
@@ -61,4 +66,38 @@ public class TbUserController {
         return "redirect:/index";
     }
 
+    @PostMapping("/avatar/upload")
+    public String uploadAvatar(MultipartFile avatar,HttpSession session){
+        TbUser user = (TbUser)session.getAttribute("user");
+        if(user==null){
+            //暂不做异常未登录提示
+            return "admin/user/information";
+        }
+        String uuidName = "";
+        try {
+            uuidName = getFilePath(avatar);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        // 存入数据库
+        tbUserService.updateAvatar(user.getId(),uuidName);
+
+        try {
+            avatar.transferTo(new File(baseAvatarLocation+uuidName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "admin/user/information";
+    }
+
+
+    private String getFilePath(MultipartFile file) throws IllegalAccessException{
+        String originalName = file.getOriginalFilename();
+        if(originalName==null){
+            throw new IllegalAccessException("文件名不能为空");
+        }
+        String suffix = originalName.substring(originalName.lastIndexOf(".") + 1);
+
+        return UUID.randomUUID().toString() + "." + suffix;
+    }
 }

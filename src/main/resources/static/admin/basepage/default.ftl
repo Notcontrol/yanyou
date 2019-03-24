@@ -35,10 +35,10 @@
                     </li>
                     <li class="menu-item-has-children dropdown" id="menu-li-forms">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
+                           aria-expanded="false"> <i class="menu-icon fa fa-th"></i>交流园地</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="formsData.ftl">Basic Form</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="../forms-advanced.html">Advanced Form</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="${fy}/push-infos/push-page">浏览信息</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="${fy}/push-infos/push-page">发布信息</a></li>
                         </ul>
                     </li>
 

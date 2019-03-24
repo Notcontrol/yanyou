@@ -22,4 +22,6 @@ public class TbUser implements Serializable{
     private Date createTime;
     private Date updateTime;
 
+    private String avatar;
+
 }

@@ -76,11 +76,6 @@
 <body>
 <!-- Left Panel -->
 <@leftPanel>
-    <script type="text/javascript">
-        $(function () {
-            jQuery("#menu-li-index").addClass("active");
-        });
-    </script>
 </@leftPanel>
 <!-- /#left-panel -->
 <!-- Right Panel -->
@@ -738,7 +733,7 @@
 <script>
     jQuery(document).ready(function ($) {
         "use strict";
-
+        jQuery("#menu-li-index").addClass("active");
         // Pie chart flotPie1
         var piedata = [
             {label: "Desktop visits", data: [[1, 32]], color: '#5c6bc0'},

@@ -12,7 +12,8 @@
         school AS "school",
         specialty AS "specialty",
         create_time AS "createTime",
-        update_time AS "updateTime"
+        update_time AS "updateTime",
+        avatar AS "avatar"
     </sql>
 
     <select id="findByUserAccountAndPassword" resultType="TbUser">
@@ -69,6 +70,12 @@
     <update id="updatePassword">
         UPDATE tb_user
         SET user_password = #{newPassword}
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateAvatar">
+        UPDATE tb_user
+        SET Avatar = #{Avatar}
         WHERE id = #{id}
     </update>
 
