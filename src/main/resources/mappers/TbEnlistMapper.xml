@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.henu.dao.TbEnlistMapper">
+
+    <sql id="tbEnlistMapperColumn">
+        ENLIST_ID AS "enlistId",
+        EX_SUBJECTS AS "exSubjects",
+        GENDER AS "gender",
+        PHONE AS "phone",
+        CONNECT_QQ AS "connectQQ",
+        ENLIST_DETAIL AS "enlistDetail",
+        PUBLISH_ID AS "publisherId",
+        TITLE AS "title"
+    </sql>
+
+<insert id="insertOne" parameterType="com.henu.entity.TbEnlist">
+    insert into tb_enlist (EX_SUBJECTS,GENDER,PHONE,CONNECT_QQ,ENLIST_DETAIL,PUBLISH_ID,TITLE)
+    values (#{tbEnlist.exSubjects},#{tbEnlist.gender},#{tbEnlist.phone},#{tbEnlist.connectQQ},#{tbEnlist.enlistDetail},#{tbEnlist.publisherId},#{tbEnlist.title})
+    <selectKey resultType="Integer" order="AFTER" keyProperty="tbEnlist.enlistId">
+        SELECT LAST_INSERT_ID() AS enlistId
+    </selectKey>
+</insert>
+
+    <select id="fineOneByPrimaryKey" resultType="com.henu.entity.TbEnlist">
+        SELECT
+        <include refid="tbEnlistMapperColumn"/>
+        FROM tb_enlist
+        <where>
+            ENLIST_ID = #{id}
+        </where>
+    </select>
+
+
+
+    <select id="findByUserIdConut" resultType="int">
+        SELECT
+        COUNT(ENLIST_ID)
+        FROM
+        tb_enlist
+        WHERE
+        PUBLISH_ID = #{userId}
+    </select>
+
+</mapper>
